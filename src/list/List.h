@@ -12,6 +12,8 @@ protected:
 	void copyNodes(ListNodePosi(T) p, int n);                     //复制自结点p开始的n的结点
 	void merge(ListNodePosi(T)&, int, List<T>&, ListNodePosi(T), int);
 	void mergeSort(ListNodePosi(T)&, int);
+	void selectionSort(ListNodePosi(T) p, int n);
+	void insertionSort(ListNodePosi(T) p, int n);
 
 public:
 	List() { init(); }
@@ -29,7 +31,7 @@ public:
 	bool valid(ListNodePosi(T) p) {                                //判断p对外是否合法
 		return p && p != this->header&&p != this->trailer;
 	}
-	int disOrdered() const;
+	bool disOrdered() const;
 	ListNodePosi(T) find(T const& e) const {                       //无序查找
 		return find(e, _size, this->trailer);
 	}
@@ -39,15 +41,15 @@ public:
 		return search(e, this->_size, this->trailer);
 	}
 	ListNodePosi(T) selectMax(ListNodePosi(T) p, int n) const;         //在p之后的n个结点查找最大值
-	ListNodePosi(T) selecrMax()const {
+	ListNodePosi(T) selectMax()const {
 		return selectMax(this->header->succ, this->_size);
 	}
 
 	ListNodePosi(T) insertAsFirst(T const& e);
 	ListNodePosi(T) insertAsLast(T const& e);
-	ListNodePosi(T) insertAsSucc(T const& e);
-	ListNodePosi(T) insertAsPred(T const& e);
-	T remove(ListNodePosi(T) p);
+	ListNodePosi(T) insertAsSucc(ListNodePosi(T) p,T const& e);
+	ListNodePosi(T) insertAsPred(ListNodePosi(T) p,T const& e);
+	T remove(ListNodePosi(T) p);                                 //将p删除，并返回p的data
 	void merge(List<T>& L) {
 		merge(first(), this->_size, L, L, first(), L._size);
 	}
@@ -59,6 +61,6 @@ public:
 	int uniquify();                                              //有序去重
 	void reverse();
 
-	void traverse(void(*)(T&));
+	void traverse(void(*visit)(T&));
 	template <typename VST> void traverse(VST&);
 };

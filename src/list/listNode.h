@@ -7,7 +7,7 @@ template <typename T> struct ListNode {                 //列表结点模板类（双向链
 
 	ListNode(){}
 	ListNode(T e, ListNodePosi(T) p=NULL, ListNodePosi(T) s=NULL)
-		:data(e),pred(p),s(succ){}
+		:data(e),pred(p),succ(s){}
 
 	ListNodePosi(T) insertAsPred(T const& e);            //在当前结点之前插入
 	ListNodePosi(T) insertAsSucc(T const& e);            //在当前结点之后插入
