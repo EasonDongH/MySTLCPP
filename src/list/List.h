@@ -57,6 +57,7 @@ public:
 	void sort() {
 		sort(this->header->succ, this->_size);
 	}
+
 	int deduplicate();                                           //无序去重
 	int uniquify();                                              //有序去重
 	void reverse();

@@ -1,4 +1,8 @@
 #include "List.h"
+#include <random>
+#include <time.h>
+#include <iostream>
+using namespace std;
 
 template <typename T>
 void List<T>::init() {
@@ -25,7 +29,7 @@ List<T>::List(List<T> const& L, Rank r, int n) {
 	ListNodePosi(T) p = L.header->succ;
 	while (p != L.trailer && 0 < r--)
 		p = p->succ;
-	while ( p != nullptr && 0 < n--) {
+	while (p != nullptr && 0 < n--) {
 		insertAsLast(p->data);
 		p = p->succ;
 	}
@@ -78,23 +82,22 @@ void List<T>::insertionSort(ListNodePosi(T) p, int n) {
 	}*/
 
 	for (int r = 0; r < n; r++) {
-		insertAsSucc(search(p->data, r, p));
+		insertAsSucc(search(p->data, r, p), p->data);
 		p = p->succ;
 		remove(p->pred);
 	}
 }
 
 template <typename T>
-void List<T>::selectionSort(ListNodePosi(T) p,int n) {              //保证p后有n个结点
+void List<T>::selectionSort(ListNodePosi(T) p, int n) {              //保证p后有n个结点
 	ListNodePosi(T) trail = p;
 	for (int i = 0; i < n; i++)
 		trail = trail->succ;
 	p = p->pred;
 	while (1 < n) {
-		ListNodePosi(T) max = selectMax(p, n);                     //selectMax搜索不包含p
-		insertAsPred(trail,max->data);                             //在p后n个结点找到的最大值插入到
-		remove(max);                                               //尾部，并且移除当前最大值结点
-		n--; trail = trail->pred;                                  
+		ListNodePosi(T) max = selectMax(p->succ, n);                     //selectMax搜索不包含p
+		insertAsPred(trail, remove(max));                             //在p后n个结点找到的最大值插入到尾部，并且移除当前最大值结点
+		n--; trail = trail->pred;
 	}
 }
 
@@ -108,11 +111,12 @@ T& List<T>::operator[](Rank r) const {
 }
 
 template <typename T>
-bool List<T>::disOrdered() const{                                      //默认升序为有序
+bool List<T>::disOrdered() const {                                      //默认升序为有序
 	ListNodePosi(T) p = this->header->succ;
 	while (p->succ != this->trailer) {
 		if (p->succ->data < p->data)
 			return true;
+		p = p->succ;
 	}
 	return false;
 }
@@ -126,23 +130,26 @@ ListNodePosi(T) List<T>::find(T const& e, int n, ListNodePosi(T) p) const {
 }
 
 template <typename T>
-ListNodePosi(T) List<T>::search(T const& e, int n, ListNodePosi(T) p) const{
-	while (0 < n--) {
+ListNodePosi(T) List<T>::search(T const& e, int n, ListNodePosi(T) p) const {
+	while (0 <= n--) {
 		p = p->pred;
-		if (e == p->data || e < p->data)
+		if (p->data <= e)
 			break;
 	}
 	return p;
 }
 
 template <typename T>
-ListNodePosi(T) List<T>::selectMax(ListNodePosi(T) p, int n) const{     //区间(p,p+n]
+ListNodePosi(T) List<T>::selectMax(ListNodePosi(T) p, int n) const {     //区间(p,p+n]
 	if (p == nullptr || p == this->trailer)
 		return p;
-	ListNodePosi(T) theMax = p->succ;
-	while ((p = p->succ) != this->trailer)
-		if (theMax->data < p->data)
-			theMax = p;
+	ListNodePosi(T) theMax = p;
+	for (ListNodePosi(T) cur = p; 1 < n; n--) {
+		cur = cur->succ;
+		if (theMax->data <= cur->data)                                  //相同元素找靠后的
+			theMax = cur;
+	}
+
 	return theMax;
 }
 
@@ -159,7 +166,7 @@ ListNodePosi(T) List<T>::insertAsLast(T const& e) {
 }
 
 template <typename T>
-ListNodePosi(T) List<T>::insertAsPred(ListNodePosi(T) p,T const& e) {
+ListNodePosi(T) List<T>::insertAsPred(ListNodePosi(T) p, T const& e) {
 	this->_size++;
 	return p->insertAsPred(e);
 }
@@ -183,7 +190,8 @@ T List<T>::remove(ListNodePosi(T) p) {             //保证p的合法性
 
 template <typename T>
 void List<T>::sort(ListNodePosi(T) p, int n) {
-	insertionSort(p, n);
+	//insertionSort(p, n);
+	selectionSort(p, n);
 }
 
 template <typename T>
@@ -206,7 +214,7 @@ int List<T>::deduplicate() {
 	int oldSize = this->_size;
 	Rank r = 0;
 	ListNodePosi(T) p = this->header->succ;
-	while (p != this->trailer) { 
+	while (p != this->trailer) {
 		ListNodePosi(T) q = find(p->data, r, p);                //在p的r个前驱中删除与p相同的元素
 		q == nullptr ? r++ : remove(q);                         //若存在相同元素，删除之
 		p = p->succ;                                            //不存在前驱元素+1
@@ -232,28 +240,32 @@ int List<T>::uniquify() {
 }
 
 template <typename T>
+void visit1(T& e) {
+	cout << e << " ";
+}
+
+template <typename T>
 void List<T>::reverse() {
 	if (this->_size == 1)
 		return;
 
-	ListNodePosi(T) p1 = this->header;
-	ListNodePosi(T) p2 = this->header->succ;
-	ListNodePosi(T) q1 = this->trailer;
-	ListNodePosi(T) q2 = this->trailer->pred;
-	ListNodePosi(T) tmp_p;
-	ListNodePosi(T) tmp_q;
-	while ((p1==q2)||(p2==q1)) {                   //形如：q2     p2
-		tmp_p = p2->succ; tmp_q = q2->pred;        //      p1<--->q1 
-		if (tmp_p == tmp_q)                        //形如:tmp_p==tmp_q==N
-			break;                                 //P1<->P2<->N<->q2<->q1
-		p1->succ = q2; q2->pred = p1;
-		p2->succ = q1; q1->pred = p2;
-		tmp_p->pred = q2; q2->succ = tmp_p;
-		tmp_q->succ = p2; p2->pred = tmp_q;
+	ListNodePosi(T) p1;
+	ListNodePosi(T) p2;
+	ListNodePosi(T) tmp;
 
-		p1 = p1->succ; p2 = tmp_p; tmp_p = tmp_p->succ;
-		q1 = q1->pred; q2 = tmp_q; tmp_q = tmp_q->pred;
+	p1 = this->trailer; p2 = p1->pred;
+	while (p1 != this->header) {
+		tmp = p2->pred;
+		
+		p1->succ = p2;
+		p2->pred = p1;
+
+		p1 = p2; p2 = tmp;
 	}
+
+	tmp = this->header;
+	this->header = this->trailer;
+	this->trailer = tmp;
 }
 
 template <typename T>
