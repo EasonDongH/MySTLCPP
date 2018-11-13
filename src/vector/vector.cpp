@@ -112,7 +112,6 @@ template <typename T>
 T Vector<T>::remove(Rank r) {
 	T t = this->_elem[r];
 	remove(r, r + 1);
-	this->_size--;
 	return t;
 }
 

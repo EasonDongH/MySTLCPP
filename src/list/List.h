@@ -24,7 +24,7 @@ public:
 	~List();
 
 	Rank size() const { return this->_size; }
-	bool empty() const { return this->size <= 0; }
+	bool empty() const { return this->_size <= 0; }
 	T& operator[](Rank r) const;
 	ListNodePosi(T) first() const { return this->header->succ; }   //首节点
 	ListNodePosi(T) last() const { return this->trailer->pred; }   //尾节点

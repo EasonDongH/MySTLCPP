@@ -164,6 +164,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ut_List.cpp" />
+    <ClCompile Include="ut_Queue.cpp" />
+    <ClCompile Include="ut_Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\list\list.vcxproj">
