@@ -29,11 +29,5 @@
     <ClCompile Include="ut_List.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ut_Stack.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ut_Queue.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

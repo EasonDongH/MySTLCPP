@@ -1,7 +1,4 @@
 ﻿  stdafx.cpp
   ut_List.cpp
-  ut_Queue.cpp
-  ut_Stack.cpp
-  正在生成代码...
-    正在创建库 C:\GitHub\MySTLCPP\src\Debug\UnitTest.lib 和对象 C:\GitHub\MySTLCPP\src\Debug\UnitTest.exp
-  UnitTest.vcxproj -> C:\GitHub\MySTLCPP\src\Debug\UnitTest.dll
+    正在创建库 D:\2. GitHub\MySTLCPP\src\Debug\UnitTest.lib 和对象 D:\2. GitHub\MySTLCPP\src\Debug\UnitTest.exp
+  UnitTest.vcxproj -> D:\2. GitHub\MySTLCPP\src\Debug\UnitTest.dll

@@ -23,7 +23,7 @@
     <ProjectGuid>{D3052108-C371-4AE6-BE70-BB5A0645F6CA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>UnitTest</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -164,8 +164,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ut_List.cpp" />
-    <ClCompile Include="ut_Queue.cpp" />
-    <ClCompile Include="ut_Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\list\list.vcxproj">

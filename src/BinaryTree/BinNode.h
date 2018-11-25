@@ -3,6 +3,19 @@
 #define stature(p) ((p)?(p)->height : -1)  //结点高度：空树高度为1
 typedef enum {RB_RED, RB_BLACK}RBColor;
 
+#define IsRoot(x) (!((x).parent))
+#define IsLChild(x) ((!IsRoot(x)) && ((x).parent).lc == (x))
+#define IsRChild(x) ((!IsRoot(x)) && ((x).parent).rc == (x))
+#define HasParent(x) ((x).parent)//(!IsRoot(x))
+#define HasLChild(x) ((x).lc)
+#define HasRChild(x) ((x).rc)
+#define HasBothChild(x) (HasLChild(x) && HasRChild(x))
+#define HasChild(x) (HasLChild(x) || HasRChild(x))
+#define IsLeaf(x) (!HasChild(x))
+#define sibling(p) (IsLChild(*p)? (p)->parent->rc : (p)->parent->lc)
+#define uncle(x) (IsLChild(*((x)->parent))? (x)->parent->parent->rc : (x)->parent->parent->lc)
+#define FromParentTo(x) (IsRoot(x)? _root : (IsLChild(x)? (x).parent->lc : (x).parent->rc))
+
 template <typename T> struct BinNode {
 	T data;
 	BinNodePosi(T) parent; BinNodePosi(T) lc; BinNodePosi(T) rc;
@@ -19,12 +32,12 @@ template <typename T> struct BinNode {
 	BinNodePosi(T) insertAsRC(const T& e);
 	BinNodePosi(T) succ();                       //取当前节点的直接后继
 	template <typename VST> void travLevel(VST&);
-	template <typename VST> void travPre(VST&);
+	template <typename VST> void travPre(VST& visit);
 	template <typename VST> void travIn(VST&);
 	template <typename VST> void travPost(VST&);
 
-	bool operator <(BinNode const& bn){return data < bn.data}
-	bool operator ==(BinNode const& bn){return data == bn.data}
+	bool operator <(BinNode const& bn) { return data < bn.data; }
+	bool operator ==(BinNode const& bn) { return data == bn.data; }
 };
 
 template <typename T>
