@@ -17,7 +17,8 @@ protected:
 	virtual int updateHeight(BinNodePosi(T) x);   //更新节点x的高度
 	void updateHeightAbove(BinNodePosi(T) x);     //更新节点x及其祖先的高度
 public:
-	BinTree():_size(0),_root(nullptr){}
+	BinTree() :_size(0), _root(nullptr) {}
+
 	~BinTree() { if (0 < _size) remove(_root); }
 
 	int size() const { return this->_size; }
