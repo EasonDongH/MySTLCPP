@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AVL.h" />
+    <ClInclude Include="B-Tree.h" />
     <ClInclude Include="BST.h" />
     <ClInclude Include="SplayTree.h" />
   </ItemGroup>

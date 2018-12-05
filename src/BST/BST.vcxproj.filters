@@ -24,6 +24,9 @@
     <ClInclude Include="SplayTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="B-Tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BST.cpp">
