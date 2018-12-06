@@ -13,10 +13,11 @@ private:
 			return n1;
 	}
 protected:
-	int _size; BinNodePosi(T) _root;
+	int _size; 
 	virtual int updateHeight(BinNodePosi(T) x);   //更新节点x的高度
 	void updateHeightAbove(BinNodePosi(T) x);     //更新节点x及其祖先的高度
 public:
+	BinNodePosi(T) _root;
 	BinTree() :_size(0), _root(nullptr) {}
 
 	~BinTree() { if (0 < _size) remove(_root); }
