@@ -97,7 +97,7 @@ BinNodePosi(T) Splay<T>::insert(const T& e) {
 	if (_root->data < e) {//插入新根，以t与t->rc为左右孩子
 		t->parent = _root = new BinNode<T>(e, nullptr, t, t->rc);
 		if (HasRChild(*t)) {
-			t->rc->parent = _root;
+			t->rc->parent = this->_root;
 			t->rc = nullptr;
 		}
 	}
