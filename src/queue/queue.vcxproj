@@ -115,12 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="PQ.h" />
+    <ClInclude Include="PQ_LeftHeap.h" />
+    <ClInclude Include="priority_queue.h" />
     <ClInclude Include="Queue.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\list\list.vcxproj">
       <Project>{bb05cd54-d4f0-4337-88dc-44278bf260e1}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PQ_LeftHeap.cpp" />
+    <ClCompile Include="priority_queue.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
