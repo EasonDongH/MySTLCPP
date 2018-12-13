@@ -1,15 +1,16 @@
 #pragma once
 
-typedef int Rank;                                          //秩
-#define DEFAULT_CAPACITY 3                                //默认初始容量
+typedef int Rank;                                   //秩
+#define DEFAULT_CAPACITY 3                          //默认初始容量
+#define It(x,y)  ((x) < (y))
 
 template <typename T> class Vector {
 protected:
-	Rank _size; int _capacity; T* _elem;                   //规模、容量、数据区
-	void copyFrom(T const* A, Rank lo, Rank hi);           //复制数据区间A[lo,hi]
-	void expand();                                         //空间不足时扩容
-	void shrik();                                          //填充因子过小时缩容
-	Rank max(Rank lo, Rank hi);                            //选取区间[lo,hi]最大元素
+	Rank _size; int _capacity; T* _elem;             //规模、容量、数据区
+	void copyFrom(T const* A, Rank lo, Rank hi);     //复制数据区间A[lo,hi]
+	void expand();                                   //空间不足时扩容
+	void shrik();                                    //填充因子过小时缩容
+	Rank max(Rank lo, Rank hi);                      //选取区间[lo,hi]最大元素
 	void swap(T& t1, T& t2) {
 		T tmp = t1; t1 = t2; t2 = tmp;
 	}
