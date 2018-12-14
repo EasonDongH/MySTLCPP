@@ -1,6 +1,6 @@
 #pragma once
 
-template <typename T> class Alogrithm {
+template <typename T> class Algorithm {
 protected:
 	bool bubble(Rank lo, Rank hi);
 	void bubblesort(Rank lo, Rank hi);
@@ -10,4 +10,7 @@ protected:
 	Rank partition(Rank lo, Rank hi);
 	void quickSort(Rank lo, Rank hi);
 	void heapSort(Rank lo, Rank hi);
+
+public:
+	int KMP(char* P, char* T);
 };

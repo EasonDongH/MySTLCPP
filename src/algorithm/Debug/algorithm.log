@@ -1,1 +1,12 @@
-﻿
+﻿  alorigthm.cpp
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(5): error C2061: 语法错误: 标识符“Rank”
+  d:\2. github\mystlcpp\src\algorithm\alogrithm.h(16): note: 参见对正在编译的 类 模板 实例化 "Alogrithm<T>" 的引用
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(6): error C2061: 语法错误: 标识符“Rank”
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(7): error C2061: 语法错误: 标识符“Rank”
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(8): error C2061: 语法错误: 标识符“Rank”
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(9): error C2061: 语法错误: 标识符“Rank”
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(10): error C3646: “partition”: 未知重写说明符
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(10): error C2059: 语法错误:“(”
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(10): error C2238: 意外的标记位于“;”之前
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(11): error C2061: 语法错误: 标识符“Rank”
+d:\2. github\mystlcpp\src\algorithm\alogrithm.h(12): error C2061: 语法错误: 标识符“Rank”

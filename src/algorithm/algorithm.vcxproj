@@ -115,7 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="alogrithm.h" />
+    <ClInclude Include="algorithm.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="algorithm.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
