@@ -195,3 +195,28 @@ void Vector<T>::traverse(VST& visit) {
 	for (int i = 0; i < this->_size; i++)
 		visit(this->_elem[i]);
 }
+
+template<typename T>
+void Vector<T>::quickSort(Rank lo, Rank hi) {
+	if (hi - lo < 2) return;
+	Rank mi = partition(lo, hi - 1);//在区间[lo,hi-1]选取轴点pivot
+	quickSort(lo, mi);
+	quickSort(mi + 1, hi);
+}
+
+//版本A：随机选取pivot，无法避免最坏情况
+template <typename T>
+Rank Vector<T>::partition(Rank lo, Rank hi) {
+	swap(_elem[lo], _elem[lo + rand() % (hi - lo + 1)]);//随机选取
+	T pivot = _elem[lo];
+	while (lo < hi) {
+		while ((lo < hi) && pivot <= _elem[hi])//在右侧找小于pivot的元素
+			--hi;
+		_elem[lo] = _elem[hi];                            //归于左侧
+		while ((lo < hi) && _elem[lo] <= pivot)//再在左侧找大于pivot的元素
+			++lo;
+		_elem[hi] = _elem[lo];                            //归于右侧
+	}
+	_elem[lo] = pivot;                                       //轴点归位
+	return lo;                                                     
+}

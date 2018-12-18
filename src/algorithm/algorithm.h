@@ -1,4 +1,5 @@
 #pragma once
+#include "../vector/vector.h"
 
 template <typename T> class Algorithm {
 protected:
@@ -13,4 +14,6 @@ protected:
 
 public:
 	int KMP(char* P, char* T);
+
+	int BM(char* P, char* T);
 };
