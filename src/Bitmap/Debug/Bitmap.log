@@ -1,0 +1,9 @@
+﻿  Bitmap.cpp
+d:\2. github\mystlcpp\src\bitmap\bitmap.h(19): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+d:\2. github\mystlcpp\src\bitmap\bitmap.h(47): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+d:\2. github\mystlcpp\src\bitmap\bitmap.cpp(6): error C2511: “Bitmap::Bitmap(void)”:“Bitmap”中没有找到重载的成员函数
+  d:\2. github\mystlcpp\src\bitmap\bitmap.h(5): note: 参见“Bitmap”的声明
+d:\2. github\mystlcpp\src\bitmap\bitmap.cpp(11): error C2084: 函数“Bitmap::~Bitmap(void)”已有主体
+  d:\2. github\mystlcpp\src\bitmap\bitmap.h(23): note: 参见“{dtor}”的前一个定义
